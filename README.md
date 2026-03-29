@@ -1,61 +1,87 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📝 Laravel Note App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Bu loyiha foydalanuvchilarga o'zlarining shaxsiy eslatmalarini (notes) yaratish, tahrirlash, arxivlash va boshqarish imkonini beruvchi zamonaviy veb-ilovadir. Loyiha **Laravel 12** va **Tailwind CSS** (DaisyUI bilan) yordamida yaratilgan bo'lib, juda tez va interaktiv ishlaydi.
 
-## About Laravel
+## 🌟 Asosiy imkoniyatlar (Features)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* **🔐 Xavfsiz avtorizatsiya tizimi:** Foydalanuvchilar ro'yxatdan o'tishi, tizimga kirishi va parolini tiklashi mumkin (maxsus tayyorlangan pochta xabari orqali).
+* **⚡ Tezkor eslatmalar (AJAX):** Yangi eslatmalar sahifani yangilamasdan, orqa fonda (AJAX orqali) darhol saqlanadi.
+* **✏️ O'qish va tahrirlash:** Eslatmalarni to'liq ekranda o'qish va ularning sarlavhasi, mazmuni yoki turini (type) tahrirlash imkoniyati.
+* **🗂 Arxiv tizimi:** 
+  * Kerak bo'lmagan, lekin o'chirishga ko'zi qiymagan eslatmalarni **arxivlash**.
+  * Arxivlangan eslatmalarni alohida maxsus sahifada ko'rish va xohlagan paytda **qayta tiklash (restore)**.
+  * Barcha arxivlangan eslatmalarni bir tugma bilan **butunlay tozalab tashlash (clean archive)**.
+* **🛡 Maxfiylik:** Har bir foydalanuvchi faqatgina o'zi yaratgan eslatmalarni ko'radi va boshqaradi (xavfsizlik `Auth::user()->id` orqali ta'minlangan).
+* **🎨 Zamonaviy UI:** Tailwind CSS v4 va DaisyUI yordamida chiroyli va qulay dizayn (Light, Dark va Cupcake temalari qo'llab-quvvatlanadi).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠 Texnologiyalar to'plami (Tech Stack)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Backend:** PHP 8.2+, Laravel 12.0
+* **Frontend:** Tailwind CSS v4, DaisyUI, Vite, JavaScript (AJAX uchun)
+* **Ma'lumotlar bazasi:** MySQL / PostgreSQL / SQLite (Sizning tanlovingizga qarab)
 
-## Learning Laravel
+## 🚀 O'rnatish va ishga tushirish (Installation)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Loyihani o'z kompyuteringizda (lokal muhitda) ishga tushirish uchun quyidagi qadamlarni bajaring:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**1. Repozitoriyni yuklab oling:**
+```bash
+git clone https://github.com/SizningUsername/note-app.git
+cd note-app
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**2. Barcha PHP kutubxonalarni o'rnating:**
+```bash
+composer install
+```
 
-## Laravel Sponsors
+**3. NPM paketlarni o'rnating:**
+```bash
+npm install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**4. `.env` faylini yarating va sozlang:**
+```bash
+cp .env.example .env
+```
+Yaratilgan fayl ichidagi ma'lumotlar bazasi (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`) sozlamalarini o'zingizning kompyuteringizga moslang.
 
-### Premium Partners
+**5. Ilova kalitini (App Key) generatsiya qiling:**
+```bash
+php artisan key:generate
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+**6. Ma'lumotlar bazasi jadvallarini yarating:**
+```bash
+php artisan migrate
+```
 
-## Contributing
+**7. Frontend fayllarni yig'ing va serverni ishga tushiring:**
+```bash
+# Frontend fayllarni tayyorlash uchun (Vite)
+npm run build
+# (yoki kod yozish jarayonida "npm run dev")
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Laravel serverini ishga tushirish (yangi terminalda)
+php artisan serve
+```
 
-## Code of Conduct
+Endi ilova `http://localhost:8000` manzilida ishlashni boshlaydi! 🎉
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 💡 Hosting bo'yicha muhim eslatma
 
-## Security Vulnerabilities
+Agar ilovani haqiqiy serverga (hosting) yuklayotgan bo'lsangiz va u yerda **HTTPS (SSL)** o'rnatilgan bo'lsa, xavfsizlik va CSS/JS fayllarni yuklashda muammo bo'lmasligi uchun `app/Providers/AppServiceProvider.php` faylida quyidagi o'zgartirishni kiritish esdan chiqmasin:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```php
+use Illuminate\Support\Facades\URL;
 
-## License
+public function boot()
+{
+    if (config('app.env') !== 'local') {
+        URL::forceScheme('https');
+    }
+}
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+*Ushbu loyiha ochiq kodli bo'lib, uni istalgancha o'zgartirishingiz va GitHub-ga yuklashingiz mumkin!*
